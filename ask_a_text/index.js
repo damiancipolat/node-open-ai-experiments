@@ -3,7 +3,7 @@ const { loadSources, orderDocuments } = require('./utils');
 const OPENAI_API_KEY = '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';
 
 const { Configuration, OpenAIApi } = require('openai');
-const { combinations } = require('mathjs');
+
 const configuration = new Configuration({
   apiKey: OPENAI_API_KEY,
 });
@@ -33,16 +33,15 @@ const ask = async (openai, question, embeddings, sources) => {
 
   const prompt = `Answer the question based on the following context:\n\ncontext:${ctx}\n\nQ:${question}\n\nA:`;
 
-  const messages = [{ role: 'user', content: prompt }];
-  const completion = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
+  const completion = await openai.createCompletion({
+    model: 'text-davinci-003',
     temperature: 1,
-    messages,
+    prompt,
   });
 
   return {
     prompt,
-    response: completion.data.choices[0]?.message?.content,
+    response: completion.data.choices[0]?.text,
   };
 };
 
