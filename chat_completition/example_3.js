@@ -7,12 +7,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const example = async () => {
-  const messages = [
-    { role: 'system', content: 'You are friendly chatbot.' },
-    { role: 'user', content: 'Hi, my name is Isa' },
-  ];
-
+const chat = async (messages) => {
   const completion = await openai.createChatCompletion({
     model: 'gpt-3.5-turbo',
     messages: messages,
@@ -23,4 +18,21 @@ const example = async () => {
   console.log('>', result);
 };
 
-example();
+const context = [];
+
+const part_1 = [
+  { role: 'system', content: 'You are friendly chatbot.' },
+  { role: 'user', content: 'Hi, my name is Isa' },
+];
+
+const part_2 = [
+  { role: 'system', content: 'You are friendly chatbot.' },
+  { role: 'user', content: 'Yes,  can you remind me, What is my name?' },
+];
+
+const run = async () => {
+  context.push(part_1);
+  chat(context);
+};
+
+run();
