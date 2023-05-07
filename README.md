@@ -1,3 +1,50 @@
-# node-open-ai-experiments
+# Node.js Project with Vanilla JS and OpenAI SDK
 
-Based in the example: https://github.com/postor/chatpdf-minimal-demo
+This project demonstrates how to use the OpenAI SDK with Node.js and Vanilla JavaScript to create natural language processing (NLP) applications.
+
+## Requirements
+
+Before continuing, ensure you have the following installed on your system:
+
+- Node.js
+- npm
+- An OpenAI API key
+
+## Installation
+
+To install the project, follow these steps:
+
+1. Clone this repository to your computer
+2. In the project folder, run `npm install` to install the dependencies.
+3. Create a `.env` file in the root of the project and add your OpenAI API key in a variable called `OPENAI_API_KEY`.
+
+## Usage
+
+The project includes two examples of NLP functionalities using the OpenAI API: embeddings + textCompletion and chatCompletion.
+
+### Example 1: Embeddings + TextCompletion
+
+This example uses the OpenAI API to generate a list of words similar to a given word using embeddings, and then uses the text completion function to generate a complete sentence from a user-entered seed text.
+
+To try this example, run the following command in the terminal:
+
+```
+cd ask_a_test
+node index.js
+```
+
+### Example 2: ChatCompletion
+
+This example uses the OpenAI API to create an autocomplete chatbot that can respond to questions and have simple conversations with the user.
+
+To try this example, run the following command in the terminal:
+
+```
+cd chat_completion
+node example_1.js
+node example_2.js
+```
+
+## Conclusion
+
+This project provides a simple demonstration of how to use the OpenAI SDK with Node.js and Vanilla JavaScript to create NLP applications. Feel free to experiment with different OpenAI API functions and use this project as a starting point for your own NLP projects.
