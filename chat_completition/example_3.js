@@ -16,6 +16,9 @@ const chat = async (messages) => {
 
   const result = completion.data.choices[0].message.content;
   console.log('>', result);
+
+  // Return chat object, use asssitant role as gpt part.
+  return { role: 'assistant', content: result };
 };
 
 const context = [];
@@ -26,13 +29,19 @@ const part_1 = [
 ];
 
 const part_2 = [
-  { role: 'system', content: 'You are friendly chatbot.' },
   { role: 'user', content: 'Yes,  can you remind me, What is my name?' },
 ];
 
 const run = async () => {
-  context.push(part_1);
-  chat(context);
+  // First part
+  context.push(...part_1);
+  const response_1 = await chat(context);
+
+  // Append in the context the previous response and the new question.
+  context.push(response_1);
+  context.push(...part_2);
+  console.log(context);
+  const response_2 = await chat(context);
 };
 
 run();

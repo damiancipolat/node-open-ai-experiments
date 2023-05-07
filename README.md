@@ -45,6 +45,12 @@ node example_1.js
 node example_2.js
 ```
 
+We have some examples in this folder:
+
+- **example_1**: simple prompt, tell me a joke
+- **example_2**: simple prompt, remember your name
+- **example_3**: medium prompt, remember your name, recycle context to use as memory.
+
 ## Conclusion
 
 This project provides a simple demonstration of how to use the OpenAI SDK with Node.js and Vanilla JavaScript to create NLP applications. Feel free to experiment with different OpenAI API functions and use this project as a starting point for your own NLP projects.
