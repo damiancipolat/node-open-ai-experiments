@@ -43,7 +43,7 @@ const basePrompt2 = [
     4) check for a final, if the customer wants to add anything else.\    
     5) Make sure to clarify all options, extras and sizes to uniquely \
     6) then request the client email, to send the order via email. \
-    7) after the end of order finish, respond @END@.\
+    7) after the end order finish, respond @END@.\
 You respond in a short, very conversational friendly style. \
 The menu includes \
 pepperoni pizza  12.95, 10.00, 7.00 \
@@ -70,7 +70,7 @@ const summaryize = {
   role: 'system',
   content: `"Create a JSON with the collected order, fill the products array, calculate the total and include the delivery addres, use the next JSON format\
   {"products":[],"total":"","address":"","email":""}\
-  return only the JSON in one line in the middle of <code></code>\"`,
+  Response the JSON in the middle of <code></code> and anyhting more.\"`,
 };
 
 module.exports = {
