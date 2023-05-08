@@ -14,12 +14,19 @@ const ask = async (prompt) => {
   // Save the question.
   const user = { role: 'user', content: prompt };
   context.push(user);
-  // console.log('*', context);
+  console.log('*', context);
   console.log('> Waiting response...');
 
   // Process and save the response.
   const response = await completion(context);
   context.push(response);
+
+  if (response.content.includes('@END@')) {
+    context.push(prompts.summaryize);
+    context.push({ role: 'user', content: '' });
+    const resumen = await completion(context);
+    console.log('x>x', resumen);
+  }
 
   console.log('>', response.content);
 };
@@ -40,7 +47,7 @@ const readLine = async (line) => {
 
 // Read line and repeat.
 const start = async () => {
-  context.push(...prompts.basePrompt);
+  context.push(...prompts.basePrompt2);
   await ask('');
   readLine();
 };
