@@ -1,6 +1,7 @@
 const readline = require('readline');
 const { completion } = require('./utils');
 const prompts = require('./prompts');
+const { sendReceipt } = require('./receipt');
 const { isOrderFinish, parseOrderFromChat } = require('./events');
 const context = [];
 
@@ -16,7 +17,8 @@ const summaryze = async () => {
   context.push({ role: 'user', content: '' });
   const resumen = await completion(context);
   const order = parseOrderFromChat(resumen.content);
-  console.log('NEW ORDER', order);
+  await sendReceipt(order);
+  console.log('Receipt sent to', order.email);
 };
 
 // Process ask and response.

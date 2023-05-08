@@ -68,9 +68,9 @@ bottled water 5.00 \
 
 const summaryize = {
   role: 'system',
-  content: `"Create a JSON with the collected order, fill the products array, calculate the total and include the delivery addres, use the next JSON format\
+  content: `"Put in a JSON the collected order, fill the products array, calculate the total and include the delivery addres, use the next JSON format\
   {"products":[],"total":"","address":"","email":""}\
-  Response the JSON in the middle of <code></code> and anyhting more.\"`,
+  Reply with only the answer in JSON form and include no other commentary\"`,
 };
 
 module.exports = {
