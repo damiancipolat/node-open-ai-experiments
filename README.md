@@ -51,6 +51,21 @@ We have some examples in this folder:
 - **example_2**: simple prompt, remember your name
 - **example_3**: medium prompt, remember your name, recycle context to use as memory.
 
+### Order Bots
+
+Is a collection of some chatbots via console, to simulate a conversation
+with a specific purposse
+
+```
+cd orderBot
+npm start
+```
+
+We have some examples in this folder:
+
+- **orderBot**: A chat bot to order a pizza.
+- **orderBot dinero**: A chat bot to buy electric scotters.
+
 ## Conclusion
 
 This project provides a simple demonstration of how to use the OpenAI SDK with Node.js and Vanilla JavaScript to create NLP applications. Feel free to experiment with different OpenAI API functions and use this project as a starting point for your own NLP projects.
