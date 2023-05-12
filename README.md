@@ -66,6 +66,16 @@ We have some examples in this folder:
 - **orderBot**: A chat bot to order a pizza.
 - **orderBot dinero**: A chat bot to buy electric scotters.
 
+### Chatbot server
+
+This is a simple integration with twilio whatsapp and a nodejs server with express, with this code you can chat and share comments with the chatbot.
+**Note:** Add a .env file with the openai and twilio tokens and phone number.
+
+```
+cd chatbot-server
+npm start
+```
+
 ## Conclusion
 
 This project provides a simple demonstration of how to use the OpenAI SDK with Node.js and Vanilla JavaScript to create NLP applications. Feel free to experiment with different OpenAI API functions and use this project as a starting point for your own NLP projects.
