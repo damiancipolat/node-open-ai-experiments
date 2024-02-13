@@ -76,6 +76,18 @@ cd chatbot-server
 npm start
 ```
 
+### calling_functions
+
+There are some examples of how to user the function calling in openapi prompts,
+and mix the response with code execution.
+
+**Note:** Add a .env file with the openai and twilio tokens and phone number.
+
+```
+cd chatbot-server
+npm start
+```
+
 ## Conclusion
 
 This project provides a simple demonstration of how to use the OpenAI SDK with Node.js and Vanilla JavaScript to create NLP applications. Feel free to experiment with different OpenAI API functions and use this project as a starting point for your own NLP projects.
