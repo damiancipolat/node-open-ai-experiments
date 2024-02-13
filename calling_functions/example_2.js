@@ -1,7 +1,8 @@
 require('dotenv').config();
 const readline = require('readline');
 const { Configuration, OpenAIApi } = require('openai');
-const { parse } = require('path');
+const { get } = require('http');
+// https://www.datacamp.com/tutorial/open-ai-function-calling-tutorial
 
 // Bootstrap
 const configuration = new Configuration({
@@ -49,6 +50,26 @@ function getTimeOfDay() {
   return hours + ':' + minutes + ':' + seconds + ' ' + timeOfDay;
 }
 
+function getCoffeList() {
+  const cafes = [
+    { id: 1, nombre: 'Café Americano', precio: 2.5 },
+    { id: 2, nombre: 'Café Latte', precio: 3.0 },
+    { id: 3, nombre: 'Café Espresso', precio: 2.0 },
+    { id: 4, nombre: 'Café Cappuccino', precio: 3.5 },
+    { id: 5, nombre: 'Café Mocha', precio: 4.0 },
+    { id: 6, nombre: 'Café Macchiato', precio: 3.2 },
+    { id: 7, nombre: 'Café Doble', precio: 3.8 },
+    { id: 8, nombre: 'Café Frappé', precio: 4.5 },
+    { id: 9, nombre: 'Café Viennese', precio: 3.7 },
+    { id: 10, nombre: 'Café Irish', precio: 4.2 },
+  ];
+  return cafes.map((e) => 'id:' + e.id + ' nombre:' + e.nombre).join(',');
+}
+
+function getCoffe(id) {
+  return id.toString();
+}
+
 function calculator(a, b) {
   return (parseInt(a) + parseInt(b)).toString();
 }
@@ -60,6 +81,29 @@ const messages = [
 ];
 
 const functions = [
+  {
+    name: 'getCoffe',
+    description: 'devuelve info de un cafe en especifico',
+    parameters: {
+      type: 'object',
+      properties: {
+        id: {
+          type: 'string',
+          description: 'coffe id',
+        },
+      },
+      require: ['id'],
+    },
+  },
+  {
+    name: 'getCoffeList',
+    description: 'retorna info acerca de los cafes y el listado del menu',
+    parameters: {
+      type: 'object',
+      properties: {},
+      require: [],
+    },
+  },
   {
     name: 'calculator',
     description: 'makes the sum of two numbers',
@@ -135,6 +179,12 @@ const chat = async (text) => {
       }
       if (name === 'calculator') {
         result = calculator(args['a'], args['b']);
+      }
+      if (name === 'getCoffeList') {
+        result = getCoffeList();
+      }
+      if (name === 'getCoffe') {
+        result = getCoffe(args['id']);
       }
       response = result;
       messages.push({
