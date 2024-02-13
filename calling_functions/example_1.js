@@ -29,15 +29,14 @@ function getTimeOfDay() {
 
 // Define your ChatGPT Function
 async function callChatGPTWithFunctions(appendString) {
-  let messages = [
+  const messages = [
     {
       role: 'system',
       content: 'Perform function requests for the user',
     },
     {
       role: 'user',
-      content:
-        "Hello, i'm a user, i would like to call the hello world passing the sting 'bart simpson'",
+      content: "Hello, i'm a user, i want to know the current time",
     },
   ];
 
@@ -75,23 +74,23 @@ async function callChatGPTWithFunctions(appendString) {
     function_call: 'auto',
   });
 
+  let result;
   // Check is function calling
   if (chat.data.choices[0].finish_reason == 'function_call') {
     const {
       function_call: { name, arguments },
     } = chat.data.choices[0].message;
-    let result;
 
-    console.log('xxx', name, arguments);
+    const args = JSON.parse(arguments);
     if (name === 'helloWorld') {
-      result = helloWorld(arguments['text']);
+      result = helloWorld(args['text']);
     }
     if (name === 'getTimeOfDay') {
-      result = helloWorld();
+      result = getTimeOfDay();
     }
+  } else {
   }
-
-  console.log('>', chat.data, 'xx', chat.data.choices[0]?.message?.content);
+  console.log('result', result);
 }
 
 callChatGPTWithFunctions();
