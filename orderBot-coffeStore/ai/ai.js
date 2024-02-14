@@ -34,7 +34,7 @@ const chat = async (text, messages, functions, fnMap) => {
       const args = JSON.parse(arguments);
 
       if (fnMap[name] != null) {
-        console.log('111', args);
+        console.log('111', args, name);
         response = fnMap[name](args);
       } else {
         console.error('Function not found', name);

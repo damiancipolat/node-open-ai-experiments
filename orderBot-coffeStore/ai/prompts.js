@@ -7,8 +7,30 @@ const messages = [
 
 const functions = [
   {
-    name: 'getCoffe',
-    description: 'devuelve info de un cafe en especifico.',
+    name: 'prepareOrder',
+    description: 'prepara mi pedido con el formato que especifica la orden.',
+    parameters: {
+      type: 'object',
+      properties: {
+        id: {
+          type: 'string',
+          description: 'id del elemento',
+        },
+        ammount: {
+          type: 'string',
+          description: 'cantidad de elementos',
+        },
+        email: {
+          type: 'string',
+          description: 'email a enviar el recibo',
+        },
+      },
+      require: ['id', 'quantity'],
+    },
+  },
+  {
+    name: 'getMenuItem',
+    description: 'devuelve el valor e info de un item del menu',
     parameters: {
       type: 'object',
       properties: {
@@ -21,7 +43,7 @@ const functions = [
     },
   },
   {
-    name: 'getCoffeList',
+    name: 'getMenu',
     description: 'retorna info acerca de los cafes y el listado del menu',
     parameters: {
       type: 'object',

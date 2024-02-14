@@ -27,8 +27,20 @@ const getCoffe = (id) => {
   return store.getMenuItem(id);
 };
 
+const getMenu = () => {
+  return store.getMenuAll();
+};
+
+const getMenuItem = (id) => {
+  return store.getMenuItem(id);
+};
+
 const calculator = ({ a, b }) => {
   return (parseInt(a) + parseInt(b)).toString();
+};
+
+const prepareOrder = ({ email, item, ammount }) => {
+  store.addOrder(email, item, ammount);
 };
 
 module.exports = {
@@ -37,4 +49,7 @@ module.exports = {
   getCoffeList,
   calculator,
   helloWorld,
+  getMenu,
+  getMenuItem,
+  prepareOrder,
 };
