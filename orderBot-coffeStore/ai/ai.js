@@ -17,6 +17,8 @@ const chat = async (text, messages, functions, fnMap) => {
       content: text,
     });
     //console.log(messages);
+    process.stdout.write('\x1b[31mWait..\x1b[0m');
+
     const chat = await openai.createChatCompletion({
       model: 'gpt-4-turbo-preview',
       messages,
@@ -50,6 +52,8 @@ const chat = async (text, messages, functions, fnMap) => {
         content: chat.data.choices[0].message.content,
       });
     }
+    process.stdout.write('\r');
+    process.stdout.write('\x1b[2K');
 
     console.log('\x1b[33m', 'AI > ' + response, '\x1b[0m');
   } catch (error) {
