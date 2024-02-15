@@ -5,7 +5,7 @@ const messages = [
     1) Saludo y solicitud de correo electrónico:    
     Comienza saludando al cliente y pídele su correo electrónico para fines de facturación y notificaciones sobre su pedido.
     2) Selección del producto:    
-    Pregunta al cliente si quiere ver el menu, si dice que si usa la funcion getMenu luego pregunta si quiere algun sabor?.
+    Pregunta siempre al cliente si quiere ver el menu, si dice que si usa la funcion getMenu luego pregunta si quiere algun sabor, nunca uses la funcion getMenu sin antes preguntar. luego pasa al proximo punto.
     3) Elección de sabores:    
     Si quiere un helado pregunta que sabores quiere en base al helado elegido.
     4) Cantidad:

@@ -25,12 +25,12 @@ const onClose = () => {
 };
 
 const start = async () => {
-  console.log('Escribe un mensaje (o "exit" para salir): ');
+  console.log('AI > Heladeria GPT v 1.0 by Damian Cipolat');
   await ai.chat('', messages, prompts.functions, fnMap);
 };
 
 rl.on('line', onLine);
 rl.on('close', onClose);
-rl.setPrompt('>');
+rl.setPrompt('');
 rl.prompt();
 start();

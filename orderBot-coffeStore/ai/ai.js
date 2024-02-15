@@ -16,7 +16,7 @@ const chat = async (text, messages, functions, fnMap) => {
       role: 'user',
       content: text,
     });
-    console.log(messages);
+    //console.log(messages);
     const chat = await openai.createChatCompletion({
       model: 'gpt-4-turbo-preview',
       messages,
@@ -34,7 +34,7 @@ const chat = async (text, messages, functions, fnMap) => {
       const args = JSON.parse(arguments);
 
       if (fnMap[name] != null) {
-        console.log('111', args, name);
+        // console.log('111', args, name);
         response = fnMap[name](args);
         messages.push({
           role: 'assistant',
@@ -51,7 +51,7 @@ const chat = async (text, messages, functions, fnMap) => {
       });
     }
 
-    console.log('AI>' + response);
+    console.log('AI > ' + response);
   } catch (error) {
     messages.pop();
     console.error(
