@@ -26,10 +26,6 @@ const getMenu = () => {
   return store.getMenuAll();
 };
 
-const getMenuItem = (id) => {
-  return store.getMenuItem(id);
-};
-
 const calculator = ({ a, b }) => {
   return (parseInt(a) + parseInt(b)).toString();
 };
@@ -46,6 +42,5 @@ module.exports = {
   getCoffeList,
   calculator,
   getMenu,
-  getMenuItem,
   prepareOrder,
 };

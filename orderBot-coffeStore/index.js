@@ -31,6 +31,6 @@ const start = async () => {
 
 rl.on('line', onLine);
 rl.on('close', onClose);
-rl.setPrompt('\x1b[37m');
+rl.setPrompt('');
 rl.prompt();
 start();

@@ -54,20 +54,6 @@ const functions = [
     },
   },
   {
-    name: 'getMenuItem',
-    description: 'esto es para ver en mayor detalle el pedido',
-    parameters: {
-      type: 'object',
-      properties: {
-        id: {
-          type: 'string',
-          description: 'coffe id',
-        },
-      },
-      require: ['id'],
-    },
-  },
-  {
     name: 'getMenu',
     description:
       'Brinda informacion de todos los productos disponibles para ser vendidos, se usa para responder consultas de cuando se quiere ver el menu',
