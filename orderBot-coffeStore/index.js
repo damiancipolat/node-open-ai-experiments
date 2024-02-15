@@ -24,9 +24,13 @@ const onClose = () => {
   console.log('bye bye');
 };
 
-console.log('Escribe un mensaje (o "exit" para salir): ');
+const start = async () => {
+  console.log('Escribe un mensaje (o "exit" para salir): ');
+  await ai.chat('', messages, prompts.functions, fnMap);
+};
 
 rl.on('line', onLine);
 rl.on('close', onClose);
 rl.setPrompt('>');
 rl.prompt();
+start();

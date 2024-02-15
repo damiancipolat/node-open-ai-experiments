@@ -1,11 +1,6 @@
 const store = require('./store');
 
 // Prompt functions
-const helloWorld = (appendString) => {
-  let hello = 'Hello World! ' + appendString;
-  return hello;
-};
-
 const getTimeOfDay = () => {
   let date = new Date();
   let hours = date.getHours();
@@ -39,8 +34,10 @@ const calculator = ({ a, b }) => {
   return (parseInt(a) + parseInt(b)).toString();
 };
 
-const prepareOrder = ({ email, item, ammount }) => {
-  store.addOrder(email, item, ammount);
+const prepareOrder = (args) => {
+  //store.addOrder(email, item, ammount);
+  console.log('ORDER', args);
+  return 'listo tu orden esta en camino';
 };
 
 module.exports = {
@@ -48,7 +45,6 @@ module.exports = {
   getCoffe,
   getCoffeList,
   calculator,
-  helloWorld,
   getMenu,
   getMenuItem,
   prepareOrder,

@@ -16,9 +16,9 @@ const chat = async (text, messages, functions, fnMap) => {
       role: 'user',
       content: text,
     });
-
+    console.log(messages);
     const chat = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo-0613',
+      model: 'gpt-4-turbo-preview',
       messages,
       functions,
       function_call: 'auto',
@@ -36,6 +36,10 @@ const chat = async (text, messages, functions, fnMap) => {
       if (fnMap[name] != null) {
         console.log('111', args, name);
         response = fnMap[name](args);
+        messages.push({
+          role: 'assistant',
+          content: response,
+        });
       } else {
         console.error('Function not found', name);
       }
