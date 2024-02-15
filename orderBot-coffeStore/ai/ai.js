@@ -51,7 +51,7 @@ const chat = async (text, messages, functions, fnMap) => {
       });
     }
 
-    console.log('AI > ' + response);
+    console.log('\x1b[33m', 'AI > ' + response, '\x1b[0m');
   } catch (error) {
     messages.pop();
     console.error(
