@@ -1,8 +1,6 @@
 require('dotenv').config();
 const readline = require('readline');
 const { Configuration, OpenAIApi } = require('openai');
-const { get } = require('http');
-// https://www.datacamp.com/tutorial/open-ai-function-calling-tutorial
 
 // Bootstrap
 const configuration = new Configuration({
@@ -73,17 +71,31 @@ function getCoffe(id) {
 function calculator(a, b) {
   return (parseInt(a) + parseInt(b)).toString();
 }
+
+function remember(text) {
+  console.log('xxxx', text);
+}
+
+async function asAudio(text) {
+  console.log('*', text);
+  return text;
+}
+
 const messages = [
   {
     role: 'system',
     content: 'Perform function requests for the user',
+  },
+  {
+    role: 'user',
+    content: "Hello, i'm a user, i want to know the current time",
   },
 ];
 
 const functions = [
   {
     name: 'getCoffe',
-    description: 'devuelve info de un cafe en especifico',
+    description: 'devuelve info de un cafe en especifico.',
     parameters: {
       type: 'object',
       properties: {
@@ -145,6 +157,34 @@ const functions = [
       require: [],
     },
   },
+  {
+    name: 'remember',
+    description: 'Remember something important or relevant',
+    parameters: {
+      type: 'object',
+      properties: {
+        text: {
+          type: 'string',
+          description: 'The text you want to save to remeber',
+        },
+      },
+      require: ['text'],
+    },
+  },
+  {
+    name: 'asAudio',
+    description: 'Answer the question as audio',
+    parameters: {
+      type: 'object',
+      properties: {
+        text: {
+          type: 'string',
+          description: 'The content of the response',
+        },
+      },
+      require: ['text'],
+    },
+  },
 ];
 
 const chat = async (text) => {
@@ -153,6 +193,7 @@ const chat = async (text) => {
       role: 'user',
       content: text,
     });
+
     console.log('xxx', messages);
     const chat = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo-0613',
@@ -185,6 +226,12 @@ const chat = async (text) => {
       }
       if (name === 'getCoffe') {
         result = getCoffe(args['id']);
+      }
+      if (name === 'remember') {
+        result = remember(args['text']);
+      }
+      if (name === 'asAudio') {
+        result = await asAudio(args['text']);
       }
       response = result;
       messages.push({
